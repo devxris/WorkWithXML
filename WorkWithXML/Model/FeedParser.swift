@@ -10,7 +10,7 @@ import Foundation
 
 class FeedParser: NSObject {
 	
- typealias ContentInfo = (title: String, description: String, pubDate: Date)
+ typealias ContentInfo = (title: String, description: String, pubDate: String)
 	
 	private var rssItems: [ContentInfo] = []
 	
@@ -46,4 +46,40 @@ class FeedParser: NSObject {
 
 extension FeedParser: XMLParserDelegate {
 	
+	func parserDidStartDocument(_ parser: XMLParser) {
+		rssItems = []
+	}
+	
+	func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
+		currentElement = elementName
+		if currentElement == "item" {
+			currentTitle = ""
+			currentDescription = ""
+			currentPubDate = ""
+		}
+	}
+	
+	func parser(_ parser: XMLParser, foundCharacters string: String) {
+		switch currentElement {
+		case "title" : currentTitle += string
+		case "description" : currentDescription += string
+		case "pubDate": currentPubDate += string
+		default : break
+		}
+	}
+	
+	func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+		if elementName == "item" {
+			let rssItem = ContentInfo(title: currentTitle, description: currentDescription, pubDate: currentPubDate)
+			rssItems.append(rssItem)
+		}
+	}
+	
+	func parserDidEndDocument(_ parser: XMLParser) {
+		completionHander?(rssItems)
+	}
+	
+	func parser(_ parser: XMLParser, parseErrorOccurred parseError: Error) {
+		print(parseError.localizedDescription)
+	}
 }
