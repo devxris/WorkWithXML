@@ -11,6 +11,13 @@ import UIKit
 class NewsTableViewController: UITableViewController {
 	
 	private var rssItems: [FeedParser.ContentInfo]?
+	
+	// Properties to track each cell state
+	enum CellState {
+		case expanded
+		case collapsed
+	}
+	private var cellStates: [CellState]?
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -28,6 +35,7 @@ class NewsTableViewController: UITableViewController {
 		let feedParser = FeedParser()
 		feedParser.parseFeed(feedUrl: "https://www.apple.com/main/rss/hotnews/hotnews.rss") { rssItems in
 			self.rssItems = rssItems
+			self.cellStates = [CellState](repeating: .collapsed, count: self.rssItems!.count)
 			DispatchQueue.main.async {
 				self.tableView.reloadSections(IndexSet(integer: 0), with: .none)
 			}
@@ -44,6 +52,17 @@ class NewsTableViewController: UITableViewController {
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! NewsCell
 		cell.rssItem = rssItems?[indexPath.row]
+		if let cellStates = cellStates {
+			cell.descriptionLabel.numberOfLines = cellStates[indexPath.row] == .collapsed ? 0 : 4
+		}
 		return cell
+	}
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		tableView.deselectRow(at: indexPath, animated: true)
+		let cell = tableView.cellForRow(at: indexPath) as! NewsCell
+		tableView.beginUpdates()
+		cell.descriptionLabel.numberOfLines = cell.descriptionLabel.numberOfLines == 0 ? 4 : 0
+		cellStates?[indexPath.row] = cell.descriptionLabel.numberOfLines == 0 ? .collapsed : .expanded
+		tableView.endUpdates()
 	}
 }
