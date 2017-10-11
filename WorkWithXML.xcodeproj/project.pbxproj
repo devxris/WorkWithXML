@@ -8,20 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		458CA0E11F8DD7C700D095A1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458CA0E01F8DD7C700D095A1 /* AppDelegate.swift */; };
-		458CA0E31F8DD7C700D095A1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458CA0E21F8DD7C700D095A1 /* ViewController.swift */; };
 		458CA0E61F8DD7C700D095A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 458CA0E41F8DD7C700D095A1 /* Main.storyboard */; };
 		458CA0E81F8DD7C700D095A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 458CA0E71F8DD7C700D095A1 /* Assets.xcassets */; };
 		458CA0EB1F8DD7C700D095A1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 458CA0E91F8DD7C700D095A1 /* LaunchScreen.storyboard */; };
+		458CA0F61F8DD82100D095A1 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458CA0F51F8DD82100D095A1 /* NewsTableViewController.swift */; };
+		458CA0F81F8DD83E00D095A1 /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458CA0F71F8DD83E00D095A1 /* NewsCell.swift */; };
+		458CA0FB1F8DDADD00D095A1 /* FeedParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458CA0FA1F8DDADD00D095A1 /* FeedParser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		458CA0DD1F8DD7C700D095A1 /* WorkWithXML.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkWithXML.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		458CA0E01F8DD7C700D095A1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		458CA0E21F8DD7C700D095A1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		458CA0E51F8DD7C700D095A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		458CA0E71F8DD7C700D095A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		458CA0EA1F8DD7C700D095A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		458CA0EC1F8DD7C700D095A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		458CA0F51F8DD82100D095A1 /* NewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
+		458CA0F71F8DD83E00D095A1 /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
+		458CA0FA1F8DDADD00D095A1 /* FeedParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +58,48 @@
 		458CA0DF1F8DD7C700D095A1 /* WorkWithXML */ = {
 			isa = PBXGroup;
 			children = (
-				458CA0E01F8DD7C700D095A1 /* AppDelegate.swift */,
-				458CA0E21F8DD7C700D095A1 /* ViewController.swift */,
-				458CA0E41F8DD7C700D095A1 /* Main.storyboard */,
-				458CA0E71F8DD7C700D095A1 /* Assets.xcassets */,
-				458CA0E91F8DD7C700D095A1 /* LaunchScreen.storyboard */,
-				458CA0EC1F8DD7C700D095A1 /* Info.plist */,
+				458CA0F21F8DD7D500D095A1 /* Resources */,
+				458CA0F91F8DDAC900D095A1 /* Model */,
+				458CA0F31F8DD7DC00D095A1 /* View */,
+				458CA0F41F8DD7E100D095A1 /* Controller */,
 			);
 			path = WorkWithXML;
+			sourceTree = "<group>";
+		};
+		458CA0F21F8DD7D500D095A1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				458CA0E71F8DD7C700D095A1 /* Assets.xcassets */,
+				458CA0EC1F8DD7C700D095A1 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		458CA0F31F8DD7DC00D095A1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				458CA0E91F8DD7C700D095A1 /* LaunchScreen.storyboard */,
+				458CA0E41F8DD7C700D095A1 /* Main.storyboard */,
+				458CA0F71F8DD83E00D095A1 /* NewsCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		458CA0F41F8DD7E100D095A1 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				458CA0E01F8DD7C700D095A1 /* AppDelegate.swift */,
+				458CA0F51F8DD82100D095A1 /* NewsTableViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		458CA0F91F8DDAC900D095A1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				458CA0FA1F8DDADD00D095A1 /* FeedParser.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,7 +174,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				458CA0E31F8DD7C700D095A1 /* ViewController.swift in Sources */,
+				458CA0FB1F8DDADD00D095A1 /* FeedParser.swift in Sources */,
+				458CA0F61F8DD82100D095A1 /* NewsTableViewController.swift in Sources */,
+				458CA0F81F8DD83E00D095A1 /* NewsCell.swift in Sources */,
 				458CA0E11F8DD7C700D095A1 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,7 +316,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9H46LQG73T;
-				INFOPLIST_FILE = WorkWithXML/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/WorkWithXML/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.DevXris.WorkWithXML;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -291,7 +331,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9H46LQG73T;
-				INFOPLIST_FILE = WorkWithXML/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/WorkWithXML/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.DevXris.WorkWithXML;
 				PRODUCT_NAME = "$(TARGET_NAME)";
