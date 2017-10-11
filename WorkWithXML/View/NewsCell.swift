@@ -13,4 +13,12 @@ class NewsCell: UITableViewCell {
 	@IBOutlet weak var titleLabel:UILabel!
 	@IBOutlet weak var descriptionLabel:UILabel!
 	@IBOutlet weak var dateLabel:UILabel!
+	
+	var rssItem: FeedParser.ContentInfo? {
+		didSet {
+			titleLabel.text = rssItem?.title
+			descriptionLabel.text = rssItem?.description
+			dateLabel.text = rssItem?.pubDate
+		}
+	}
 }

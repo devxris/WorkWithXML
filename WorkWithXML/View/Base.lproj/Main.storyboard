@@ -56,6 +56,11 @@
                                         <constraint firstAttribute="trailingMargin" secondItem="BSn-Vl-cCb" secondAttribute="trailing" constant="10" id="mCO-cF-QF2"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="dateLabel" destination="9fW-pr-H2Z" id="PYT-Hn-tcO"/>
+                                    <outlet property="descriptionLabel" destination="VJK-3Y-0T2" id="xON-3y-5ie"/>
+                                    <outlet property="titleLabel" destination="dTO-tW-8pu" id="exW-TD-Pb8"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
